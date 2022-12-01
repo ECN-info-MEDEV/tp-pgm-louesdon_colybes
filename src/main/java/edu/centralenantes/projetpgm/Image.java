@@ -5,6 +5,7 @@
 package edu.centralenantes.projetpgm;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -19,11 +20,14 @@ public class Image {
     }
     
     
+    public void ShowMatrice(){
+        System.out.println(matrice);
+    }
     
     
-    public void ReadFile(String fileName){
-        try{
-            FileInputStream file = new FileInputStream("C:/Users/aulou/Desktop/Projet/baboon.pgm"); 
+    public void ReadFile(String fileName) throws FileNotFoundException{
+        FileInputStream file = new FileInputStream("C:/Users/aulou/Desktop/Projet/baboon.pgm");
+        
             Scanner sc = new Scanner(file);
             String line;
             String dim;
@@ -37,7 +41,10 @@ public class Image {
             line = sc.nextLine();
             line = sc.nextLine();
             dim = sc.nextLine();
-            words = dim.split(" ");
+            System.out.println(dim);
+            words = dim.split("  ");
+
+            
             xmax = Integer.parseInt(words[0]);
             ymax = Integer.parseInt(words[1]);
             this.matrice = new int[xmax][ymax];
@@ -45,28 +52,23 @@ public class Image {
             y = 0;
             while(sc.hasNextLine())
             {
+                
                 line = sc.nextLine();
-                words = line.split(" ");
+                System.out.println(line);
+                words = line.split("  ");
                 for(String w : words){
+                    w = w.replaceAll("\\s", "");
+                    System.out.println(w);
                     this.matrice[x][y] = Integer.parseInt(w);
                     x += 1;
                     if(x >= xmax){
                         x = 0;
                         y += 1;
                     }
+                }
+            }
                 
-            }
-            }
-            sc.close();   
-        } catch(IOException e){
-             System.out.println("Probleme lors de la lecture du fichier");
-        }
+            sc.close(); 
+            
     }
-    
-    public void SaveFile(String fileName){
-    }
-    
-    
-    
-    
 }

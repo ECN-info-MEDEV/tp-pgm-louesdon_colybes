@@ -14,5 +14,6 @@ public class ProjetPGM {
     public static void main(String[] args) {
         Image im = new Image();
         im.ReadFile("Test");
+        im.ShowMatrice();
     }
 }
