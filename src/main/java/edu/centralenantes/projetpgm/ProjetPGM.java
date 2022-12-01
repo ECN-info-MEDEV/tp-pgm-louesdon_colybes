@@ -5,15 +5,16 @@
 
 package edu.centralenantes.projetpgm;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author aulou
  */
 public class ProjetPGM {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Image im = new Image();
-        im.ReadFile("Test");
-        im.ShowMatrice();
+        im.ReadFile("baboon.pgm");
     }
 }
