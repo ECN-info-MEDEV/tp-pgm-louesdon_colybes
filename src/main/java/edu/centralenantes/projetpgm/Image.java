@@ -36,9 +36,18 @@ public class Image {
         }
     }
     
-    
-        
-
+    public void sizeUp(int fois){
+        int[][] img = new int[fois*xmax][fois*ymax];
+        for (int i=0 ; i<xmax ; i++){
+            for (int j=0 ; j<ymax ; j++){
+                for (int p=0 ; p<fois ; p++){
+                    for (int q=0 ; q<fois ; q++){
+                        img[i*fois+p][j*fois+q] = this.matrice[i][j];
+                    }
+                }
+            }
+        }
+    }
     
     
     public void ReadFile(String fileName) throws FileNotFoundException{
